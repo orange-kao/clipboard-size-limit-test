@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Writing"
+dd if=/dev/zero bs=1K count=1 2> /dev/null | xclip -selection clipboard
+
+echo "Reading"
+xclip -o -selection clipboard
+

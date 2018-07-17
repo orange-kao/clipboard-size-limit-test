@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require "clipboard"
+
+random = Random.new
+
+Clipboard.clear()
+
+(0..18).each{|power|
+  data1 = random.bytes(2**power).unpack("H*").first
+  $stdout.puts "Testing #{data1.bytesize} bytes"
+
+  Clipboard.copy(data1)
+
+  data2 = Clipboard.paste
+
+  if data1 != data2 
+    $stdout.puts "Test failed"
+
+    $stdout.puts "Copy:  #{data1.bytesize} bytes"
+    $stdout.puts "Paste: #{data2.bytesize} bytes"
+    exit 1
+  end
+}
+

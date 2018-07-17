@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+$INITIAL_PWD = Dir.pwd.dup
+$EXECUTABLE_PATH = "#{File.expand_path(File.dirname($PROGRAM_NAME))}"
+
+LOG_FILE = "#{$EXECUTABLE_PATH}/log.tmp"
+
+File.open(LOG_FILE, "w:utf-8"){|logfile|
+#  logfile.flock(File::LOCK_EX)
+  logfile.puts "$stdin.tty? == #{$stdin.tty?}"
+  logfile.puts "$stdout.tty? == #{$stdout.tty?}"
+  logfile.puts "$stderr.tty? == #{$stderr.tty?}"
+}
+

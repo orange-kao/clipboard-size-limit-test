@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Writing"
+dd if=/dev/zero bs=1K count=1 2> /dev/null | xsel -i -b
+
+echo "Reading"
+xsel -o -b
+
